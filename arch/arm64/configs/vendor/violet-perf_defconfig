@@ -5595,3 +5595,6 @@ CONFIG_MACH_XIAOMI_VIOLET=y
 #
 # RmNet extensions
 #
+
+# KernelSU Next
+CONFIG_KSU=y
