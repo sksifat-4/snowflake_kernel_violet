@@ -5594,3 +5594,7 @@ CONFIG_MACH_XIAOMI_VIOLET=y
 #
 # RmNet extensions
 #
+
+#resukisu
+CONFIG_KALLSYMS=y
+CONFIG_KALLSYMS_ALL=y
