@@ -1,0 +1,43 @@
+make[1]: Entering directory '/serverhive/alamin1/kernel/out'
+  CHK     include/config/kernel.release
+  Using .. as source for kernel
+  GEN     ./Makefile
+  CHK     include/generated/uapi/linux/version.h
+  CHK     include/generated/utsrelease.h
+  CHK     include/generated/bounds.h
+  CHK     include/generated/timeconst.h
+  CHK     include/generated/asm-offsets.h
+  CALL    ../scripts/checksyscalls.sh
+  CHK     scripts/mod/devicetable-offsets.h
+  CHK     include/generated/compile.h
+  CC      kernel/rcu/tree.o
+../kernel/rcu/tree.c:4245:2: error: use of undeclared identifier 'rcu_par_gp_wq'; did you mean 'rcu_gp_wq'?
+ 4245 |         rcu_par_gp_wq = alloc_workqueue("rcu_par_gp", WQ_POWER_EFFICIENT | WQ_MEM_RECLAIM, 0);
+      |         ^~~~~~~~~~~~~
+      |         rcu_gp_wq
+../kernel/rcu/tree.c:4212:26: note: 'rcu_gp_wq' declared here
+ 4212 | struct workqueue_struct *rcu_gp_wq;
+      |                          ^
+../kernel/rcu/tree.c:4246:11: error: use of undeclared identifier 'rcu_par_gp_wq'; did you mean 'rcu_gp_wq'?
+ 4246 |         WARN_ON(!rcu_par_gp_wq);
+      |                  ^~~~~~~~~~~~~
+      |                  rcu_gp_wq
+../include/asm-generic/bug.h:109:25: note: expanded from macro 'WARN_ON'
+  109 |         int __ret_warn_on = !!(condition);                              \
+      |                                ^
+../kernel/rcu/tree.c:4212:26: note: 'rcu_gp_wq' declared here
+ 4212 | struct workqueue_struct *rcu_gp_wq;
+      |                          ^
+../kernel/rcu/tree.c:4247:2: error: implicit declaration of function 'srcu_init' [-Werror,-Wimplicit-function-declaration]
+ 4247 |         srcu_init();
+      |         ^
+../kernel/rcu/tree.c:4247:2: note: did you mean 'rcu_init'?
+../kernel/rcu/tree.c:4214:13: note: 'rcu_init' declared here
+ 4214 | void __init rcu_init(void)
+      |             ^
+3 errors generated.
+make[3]: *** [../scripts/Makefile.build:365: kernel/rcu/tree.o] Error 1
+make[2]: *** [../scripts/Makefile.build:667: kernel/rcu] Error 2
+make[1]: *** [/serverhive/alamin1/kernel/Makefile:1285: kernel] Error 2
+make[1]: Leaving directory '/serverhive/alamin1/kernel/out'
+make: *** [Makefile:153: sub-make] Error 2
